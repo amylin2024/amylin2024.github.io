@@ -149,6 +149,7 @@ const create = document.querySelector(".create");
 const tagBox = document.querySelector(".tagBox");
 const inputEl = document.querySelector(".inputEl");
 const delEls = document.getElementsByClassName(".del");
+const addBtn=document.querySelectorAll('.select_item');
 add.addEventListener("click", function () {
   if (!inputEl.value) {
     alert("請輸入");
@@ -165,6 +166,22 @@ add.addEventListener("click", function () {
   info.push(inputEl.value);
   inputEl.value = "";
 });
+
+addBtn.forEach((item)=>{
+  item.addEventListener("click",function(){
+    let itemName=this.querySelector('span').textContent
+    let html =
+    tagBox.innerHTML +
+    "<li>" +
+    "<span class='tag'>" +
+    itemName +
+    "</span>" +
+    "<span class='del'>移除</span></li>";
+    info.push(itemName);
+    tagBox.innerHTML=html
+
+  })
+})
 create.addEventListener("click", function () {
   const tags = document.querySelectorAll(".tagBox .tag");
   document.querySelector("#canvas").remove();
